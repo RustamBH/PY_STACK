@@ -1,15 +1,8 @@
 from Stack import Stack
 
-if __name__ == '__main__':
-    symbol_dict = {')': '(', '}': '{', ']': '['}
-    balanced_line = '(((([{}]))))'
-    balanced_line2 = '[([])((([[[]]])))]{()}'
-    balanced_line3 = '{{[()]}}'
-    unbalanced_line = '}{}'
-    unbalanced_line2 = '{{[(])]}}'
-    unbalanced_line3 = '[[{())}]'
 
-    unknown_list = list(balanced_line2)
+def is_balanced(line: str):
+    unknown_list = list(line)
     balanced = False
     if len(unknown_list) % 2 == 0:
         m_stack = Stack()
@@ -21,9 +14,21 @@ if __name__ == '__main__':
                     balanced = True
                     continue
                 else:
+                    balanced = False
                     break
+    return balanced
 
-    if balanced:
+
+if __name__ == '__main__':
+    symbol_dict = {')': '(', '}': '{', ']': '['}
+    balanced_line = '(((([{}]))))'
+    balanced_line2 = '[([])((([[[]]])))]{()}'
+    balanced_line3 = '{{[()]}}'
+    unbalanced_line = '}{}'
+    unbalanced_line2 = '{{[(])]}}'
+    unbalanced_line3 = '[[{())}]'
+
+    if is_balanced(unbalanced_line2):
         print('Сбалансированно')
     else:
         print('Несбалансированно')
